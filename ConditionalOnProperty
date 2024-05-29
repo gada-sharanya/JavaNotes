@@ -1,0 +1,43 @@
+ConditionalOnProperty: This annotation is used to conditionally enable or disable a bean.
+
+Based on the values given for a property in the application.properties file, that particular bean will be enabled.
+
+For example, we have a production or local datasource. And the scenario is you want to control the datasourc based on its type. We have production and local datasource types. In application.properties, you can give 
+the type pf the datasource as local or production and based on the given type that particular bean will be enabled. We will have two beans, one for prod and one for local datasource and using this annotation we will enable 
+the required datasource bean.
+
+Also there is a property called as matchIfMissing defined with this annotation, that allows the application to create the bean if the application.properties doen't define the type at all. So if matchIfMissing is true for the 
+bean, eventhough the application.properties doesn't have anything specified, that bean will be created.
+
+Example Code:
+LOCAL DATASOURCE CLASS: 
+@Configuration
+public class LocalDatabaseConfig{
+
+private static final Logger logger = LoggerFactory.getLogger(LocalDatabaseConfig.class);
+
+@Bean
+@ConditionalOnProperty(prefix="database", name="type", havingValue ="local", matchIfMissing = true)
+public String dataSource(){
+logger.info("1st datasource" - local)
+return "Local Data Source";
+}
+}
+
+PRODCUTION DATASOURCE CLASS:
+
+@Configuration
+public class ProdDatabaseConfig{
+
+private static final Logger logger = LoggerFactory.getLogger(ProdDatabaseConfig.class);
+
+@Bean
+@ConditionalOnProperty(prefix="database", name="type", havingValue ="prod")
+public String dataSource(){
+logger.info("1st datasource" - prod)
+return "Local Data Source";
+}
+}
+
+
+Here, if the application.properties doesn't have any specified type, then local datasource bean is created.
