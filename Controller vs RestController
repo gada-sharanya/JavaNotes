@@ -1,0 +1,9 @@
+@Controller
+Purpose: Indicates that the class is a Spring MVC controller where methods return view names (e.g., HTML pages).
+View Resolution: Methods return view names that are resolved by a view resolver (e.g., Thymeleaf, JSP).
+Example Usage: Typically used for web applications where you need to return HTML pages.
+
+@RestController
+Purpose: Combines @Controller and @ResponseBody, indicating that the class is a controller where methods return the response body directly (e.g., JSON, XML).
+View Resolution: Methods return the response body directly, which is serialized to the desired format (e.g., JSON).
+Example Usage: Typically used for RESTful web services where you return data rather than HTML.
