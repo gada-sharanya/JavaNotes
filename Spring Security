@@ -1,1 +1,6 @@
 Spring Security in Java:
+
+
+Classes needed to implemet Spring Security is AbstractSecurityWebApplicationInitializer.
+
+Create your class and extend the above security class to create a Spring security filter chain in you application.
