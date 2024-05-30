@@ -6,3 +6,9 @@ Classes needed to implemet Spring Security is AbstractSecurityWebApplicationInit
 Create your class and extend the above security class to create a Spring security filter chain in you application.
 
 This AbstractSecurityWebApplicationInitializer sets up a delegation proxy security for our application's entry point.
+
+
+When you create a class that extends AbstractSecurityWebApplicationInitializer, it creates a delegation proxy and looks out for securityfilterChain bean. So you need 
+to create a bean for securityfilterChain. For this, create a java class and provide annotations -> @Configuration and @EnableWebSecurity. This @EnableWebSecurity annotation 
+allows the Spring application itself create the securityfilterChain bean.  To get this @EnableWebSecurity annotation available in your application you need to add  
+spring web config maven dependency in your pom.xml file.
