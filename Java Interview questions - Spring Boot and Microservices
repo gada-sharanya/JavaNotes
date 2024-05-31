@@ -7,3 +7,22 @@
       - versioning  (Apart from URI, Versioning can be done through Query Parameter, Header, and Content Negotiation
       -- documentation
       - Right Status code for response
+      - Content Negotiation
+      - Error Handling
+      - Rest API should be Stateless
+      -Secure your Rest API
+      - Implement Pagination/Sorting/Filtering
+
+4. Architectures 
+
+      Use Registration and Discovery Pattern to Manage Instances when in a Microservice based architecture. Based on the demand we scale only those required services in 
+      a Microservice based Architecture. SO the pattern we use is R and D pattern. 
+
+      In a certain time interval ( 30 sec for eureka), the registered microservices send heart beat to Discovery Server(DS) to confirm that they are active. If the 
+      heart beat is missing DS removes it from the registry, and so does the client of DS
+
+      Client Side Load Balancing vs Server Side Load Balancing
+            Server Side LB - A single server will be present and wehenever a request comes, the server side load balancer routes it to the service instance. This also means 
+            the Server Side LB is a Single Point of failure. (Traditional Load Balancing)
+
+      Client LB: Each service has its cache. load balancing happens at the client side. In this case there is no need of an extra server for the load balancing work
