@@ -12,3 +12,6 @@ When you create a class that extends AbstractSecurityWebApplicationInitializer, 
 to create a bean for securityfilterChain. For this, create a java class and provide annotations -> @Configuration and @EnableWebSecurity. This @EnableWebSecurity annotation 
 allows the Spring application itself create the securityfilterChain bean.  To get this @EnableWebSecurity annotation available in your application you need to add  
 spring web config maven dependency in your pom.xml file.
+
+
+Creating Application Users
