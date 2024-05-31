@@ -1,0 +1,9 @@
+1. @Controller vs @RestController(Combination of ResponseBody and Controller)
+2. How a Spring Boot application Bootstrap?
+      @SpringBootApplication = @ComponentScan + @EnableAutoConfiguration + @SpringBootConfiguration
+      @EnableAutoConfiguration along with @ConditionalXX annotations helps Spring boot application to configure itself automatically.
+3. Best Standards to follow when creating RestAPI?
+      Use Richardson Maturity Model to evaluate the design of rest api's 
+      - versioning  (Apart from URI, Versioning can be done through Query Parameter, Header, and Content Negotiation
+      -- documentation
+      - Right Status code for response
