@@ -25,4 +25,15 @@
             Server Side LB - A single server will be present and wehenever a request comes, the server side load balancer routes it to the service instance. This also means 
             the Server Side LB is a Single Point of failure. (Traditional Load Balancing)
 
-      Client LB: Each service has its cache. load balancing happens at the client side. In this case there is no need of an extra server for the load balancing work
+      Client LB: Each service has its cache. load balancing happens at the client side. In this case there is no need of an extra server for the load balancing work.
+      (Example : Spring Cloud LoadBalancer)
+
+- Fault Tolerance : Microservices should be Resilent we use Resilent 4J
+      - Circuit Breaker Pattern
+      Retry Pattern 
+      Rate Limiter Pattern
+      Bulk Pattern 
+
+Lets Say suppose there is A service and there is hacker who is continuously hitting the service so that it reaches the limit and fails and crashes. How do we prevent that?
+
+- You can use limit the number of reuqest to a microservice with a rate limiter pattern implementation (eg- only 5 calls per mint)
