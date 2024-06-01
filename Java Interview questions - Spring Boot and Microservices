@@ -32,8 +32,10 @@
       - Circuit Breaker Pattern
       Retry Pattern 
       Rate Limiter Pattern
-      Bulk Pattern 
+      Bulk Head Pattern 
 
 Lets Say suppose there is A service and there is hacker who is continuously hitting the service so that it reaches the limit and fails and crashes. How do we prevent that?
 
 - You can use limit the number of reuqest to a microservice with a rate limiter pattern implementation (eg- only 5 calls per mint)
+
+
