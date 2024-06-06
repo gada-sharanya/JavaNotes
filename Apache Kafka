@@ -19,3 +19,7 @@ Consumers
 Topics/Brokers
 Zookeeper
 
+Importance of group id for Kafka Consumers: Consumers that are subscribing to the same topic are given a group id which is same. This group id is essential since the broker is partitioned (these partitions contain
+data replicas) and load balancing is achieved by the group id. That means the consumers having the same group id, will not hit the same partition and bombard with multiple listening, thus each consumer is associated with a
+single partition hence load balancing is achieved.
+
