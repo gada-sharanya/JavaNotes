@@ -1,0 +1,21 @@
+Apache Kafka
+
+Architecure of the project:
+
+- spring boot project
+- Kafka dependency in the Web
+- Controller to fetch messages from client
+- Producer who pushes the messages
+- Consumer to listen it
+- Application.properties to configure producer properties.
+
+
+
+
+-----------
+
+Producers
+Consumers 
+Topics/Brokers
+Zookeeper
+
