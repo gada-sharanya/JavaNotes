@@ -1,0 +1,73 @@
+Spring Data Gemfire
+
+For Faster performance, we implement caching mechanisms in our applications. Among many options available in the market today, we have Redis one primarily used architecture and another one is GemFire. GemFire is a
+caching mechanism for faster performance. Spring Data with Gemfire is used to implement caching in the application.
+
+In order to implement Gemfire caching in the Spring Data Application, we have different steps, annotations to consider.
+
+First we need to install gemfire and using its CLI, we first create a 1. Locator 2. Create Server 3. Create Region(Example Books Region, Employee Region  -- we map the Pojos of java with regions) We have different type 
+of regions available like replicate region, Partitioned region and local region.
+
+We can create multiple Servers, so that even if one server goes down, the other server will be available. So for instance if we create a replicated region in two srevers, ad in future even if one server goes down, we will
+be having another server.
+
+We can use sql like queries to Query the cache in gemfire -- Object Query Language (Similar to SQL)
+-------------------------
+@Configuration
+public class GemfireConfiguration {
+
+    @Bean
+    Properties gemfireProperties() {
+        Properties gemfireProperties = new Properties();
+        gemfireProperties.setProperty("name","SpringDataGemFireApplication");
+        gemfireProperties.setProperty("mcast-port", "0");
+        gemfireProperties.setProperty("log-level", "config");
+        return gemfireProperties;
+    }
+
+    @Bean
+    CacheFactoryBean gemfireCache() {
+        CacheFactoryBean gemfireCache = new CacheFactoryBean();
+        gemfireCache.setClose(true);
+        gemfireCache.setProperties(gemfireProperties());
+        return gemfireCache;
+    }
+
+    @Bean(name="employee")
+    LocalRegionFactoryBean<String, Employee> getEmployee(final GemFireCache cache) {
+        LocalRegionFactoryBean<String, Employee> employeeRegion = new LocalRegionFactoryBean();
+        employeeRegion.setCache(cache);
+        employeeRegion.setName("employee");
+        // ...
+        return employeeRegion;
+    }
+}
+
+-------------------
+
+Entity Mapping 
+
+@Region("employee")
+public class Employee {
+
+    @Id
+    public String name;
+    public double salary;
+
+    @PersistenceConstructor
+    public Employee(String name, double salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    // standard getters/setters
+}
+
+-------------
+
+@Region, to specify the region instance of the Employee class
+@Id, to annotate the property that shall be utilized as a cache key
+@PersistenceConstructor, which helps to mark the one constructor that will be used to create entities, in case multiple constructors available
+---------------------
+
+
