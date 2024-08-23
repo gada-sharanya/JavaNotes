@@ -1,0 +1,6 @@
+***HttpExchange***
+
+Http Exchange is declarative way of communicating between microservices. Usually when we want to consume an api endpoint, we use rest template/web client and http client, and write all the logic to consume that enpoint. 
+Where as in Http Exchange is a declarative way of consuming the api end point. We create an interface and annotate it with the @HttpExchange annotation and we just define different methods here and annoattions we use are 
+@GetExchange, @PostExchange, @PuExchange, @DeleteExchange and so on.. and just define these methods. The implementation is done at the run time by the application. Also we make sure to add a configuration component, 
+which is used to create the bean of the interface and provide the base url and proxy to delegate the request whenever we call the interface method(any exchange)
