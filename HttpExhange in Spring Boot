@@ -1,4 +1,4 @@
-***HttpExchange***
+**HttpExchange**
 
 Http Exchange is declarative way of communicating between microservices. Usually when we want to consume an api endpoint, we use rest template/web client and http client, and write all the logic to consume that enpoint. 
 Where as in Http Exchange is a declarative way of consuming the api end point. We create an interface and annotate it with the @HttpExchange annotation and we just define different methods here and annoattions we use are 
